@@ -3,7 +3,7 @@
 # Start by running composer install
 composer install
 
-#service cron start
+service cron start
 
 php artisan storage:link
 
