@@ -29,7 +29,7 @@ else
 fi
 
 # docker composer project
-project="wanderlinx-${env}";
+project="task-${env}";
 
 # action
 action=$2
