@@ -11,17 +11,5 @@ services:
       - ${APP_PORT}:${APP_PORT}
     volumes:
       - ./:/var/www/html/api
-    depends_on:
-      - task_redis
     env_file:
       - .env
-
-  task_redis:
-    image: redis:6-alpine
-    container_name: task_redis_${APP_ENV}
-    ports:
-      - ${REDIS_PORT}:6379
-    restart: unless-stopped
-    command: ["redis-server", "--bind", "redis", "--port", "7778", "--requirepass", "t@l!ffsss"]
-    volumes:
-       - ./api/redis.conf:/usr/local/etc/redis/redis.conf
