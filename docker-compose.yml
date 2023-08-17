@@ -12,7 +12,7 @@ services:
     volumes:
       - ../task-api/:/var/www/html/api
     depends_on:
-      - redis
+      - task_redis
     env_file:
       - .env
 
