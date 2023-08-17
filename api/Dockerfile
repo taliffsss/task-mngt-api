@@ -41,8 +41,7 @@ RUN apt-get update && apt-get install -y \
     &&  rm -rf /tmp/pear \
     &&  echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
-COPY ./composer.json $HOME/
-COPY ./composer.lock $HOME/
+COPY composer.json composer.lock $HOME/
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
