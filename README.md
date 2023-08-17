@@ -1,66 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel Task Management System
 
-## About Laravel
+This is a Task Management System built with Laravel 10. It offers a set of APIs to manage tasks and users. The project also incorporates Docker for containerization. This document will guide you on setting up and running the project.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Prerequisites
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1.  Ensure you have Docker installed on your machine (for Docker setup). If not, download and install Docker from the [official website](https://www.docker.com/).
+    
+2.  PHP, Composer, and Laravel CLI should be available on your system (for native engine setup).
+    
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Setup
 
-## Learning Laravel
+1.  **Clone the Backend Repository**:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+bashCopy code
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+`git clone https://github.com/taliffsss/task-mngt-api.git
+cd task-mngt-api` 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2.  **Frontend Repository**:
 
-## Laravel Sponsors
+For the frontend part of the application, refer to: [Task Management Web](https://github.com/taliffsss/task-mngnt-web.git).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Local Setup using xampp
+Noe: Make sure you did setup your Database.
+ 1. Setup your Database, after setting up
+	 2. run migration and seeder
 
-### Premium Partners
+### Running with Docker:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3.1 If you wish to run the application in a Docker container:
 
-## Contributing
+bashCopy code
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+`sh docker.sh [master/main] build` 
 
-## Code of Conduct
+-   `master` and `main` are used for the production environment.
+-   `build` command is used to build the Docker image.
+- Now you should be able to access the application on your local host.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Docker setup usage:
+Run `sh docker.sh [branch alias] up`
+ - up
+ - build
+ - down
+ - ps
+ - exec
 
-## Security Vulnerabilities
+Branching:
+ - main and master 
+	 - prod
+ - dev
+	 - dev
+ - Staging
+	 - staging 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3.2 **Scheduler**:
 
-## License
+The Laravel scheduler runs inside the Docker container, ensuring tasks are executed as defined in the Laravel app.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Running with Native Engine:
+
+3.1 **Install Dependencies**:
+
+bashCopy code
+
+`composer install` 
+
+3.2 **Run the Application**:
+
+bashCopy code
+
+`php artisan serve` 
+
+The application will start, and by default, it should be available at `http://localhost:8000`.
+
+## API Routes
+
+### Authentication:
+
+-   **Login**: `POST /api/auth/login`
+-   **Signup**: `POST /api/signup`
+-   **Logout (requires JWT)**: `POST /api/auth/logout`
+
+### Task Management (requires JWT):
+-   **Create a Task**: `POST /api/task/create`
+-   **Update a Task**: `PUT /api/task/update/{id}`
+-   **Delete a Task**: `DELETE /api/task/delete/{id}`
+-   **Show a Task**: `GET /api/task/show/{id}`
+-   **List All Tasks**: `GET /api/task/list`
+
+### Task Status (requires JWT):
+
+-   **List Task Statuses**: `GET /api/task-status/list`
