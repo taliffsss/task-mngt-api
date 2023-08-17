@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  api:
+  task_api:
     build:
       context: ./api/.
       dockerfile: Dockerfile
-    container_name: task_${APP_ENV}
+    container_name: task_api_${APP_ENV}
     restart: unless-stopped
     ports:
       - ${APP_PORT}:${APP_PORT}
     volumes:
-      - ../travel-api/:/var/www/html/api
+      - ../task-api/:/var/www/html/api
     depends_on:
       - redis
     env_file:
