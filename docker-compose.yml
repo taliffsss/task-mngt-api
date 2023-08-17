@@ -10,7 +10,7 @@ services:
     ports:
       - ${APP_PORT}:${APP_PORT}
     volumes:
-      - ../task-api/:/var/www/html/api
+      - ./:/var/www/html/api
     depends_on:
       - task_redis
     env_file:
