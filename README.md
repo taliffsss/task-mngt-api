@@ -94,3 +94,5 @@ The application will start, and by default, it should be available at `http://lo
 ### Task Status (requires JWT):
 
 -   **List Task Statuses**: `GET /api/task-status/list`
+
+A scheduler run daily to delete 30 days old data in task table you may see at Console/Commands

@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:delete-old-tasks')->daily();
+        $schedule->command('app:delete-old-tasks')->daily()->appendOutputTo(storage_path('logs/delete-old.log'));;
     }
 
     /**
