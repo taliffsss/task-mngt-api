@@ -1,4 +1,5 @@
 
+
 # Laravel Task Management System
 
 This is a Task Management System built with Laravel 10. It offers a set of APIs to manage tasks and users. The project also incorporates Docker for containerization. This document will guide you on setting up and running the project.
@@ -64,13 +65,9 @@ The Laravel scheduler runs inside the Docker container, ensuring tasks are execu
 
 3.1 **Install Dependencies**:
 
-bashCopy code
-
-`composer install` 
+`composer install && composer artisan key:generate && php artisan jwt:secret` 
 
 3.2 **Run the Application**:
-
-bashCopy code
 
 `php artisan serve` 
 
