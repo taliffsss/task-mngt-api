@@ -35,7 +35,7 @@ Noe: Make sure you did setup your Database.
 
 bashCopy code
 
-`sh docker.sh [master/main] build` 
+`sh docker.sh prod build` 
 
 -   `master` and `main` are used for the production environment.
 -   `build` command is used to build the Docker image.
