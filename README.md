@@ -43,11 +43,16 @@ bashCopy code
 
 Docker setup usage:
 Run `sh docker.sh [branch alias] up`
- - up
- - build
- - down
- - ps
- - exec
+ - **up**
+	 - This is likely a command to start the Docker containers for the given branch alias.
+ - **build**
+	 - Analogous to `docker-compose build`.
+ - **down**
+	 - To stop and remove Docker containers, networks, images, and volumes. Analogous to `docker-compose down`.
+ - **ps**
+	 - Shows the running containers
+ - **exec**
+	 - Executes a command inside a running container
 
 Branching:
  - main and master 
