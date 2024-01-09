@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class TaskStatus extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Cachable;
 
     /**
      * Indicates if the model should be timestamped.
@@ -28,6 +29,9 @@ class TaskStatus extends Model
     protected $fillable = [
         'name',
         'is_active',
+        'deleted_by',
+        'updated_by',
+        'created_by',
     ];
 
     public function roles(): HasOne

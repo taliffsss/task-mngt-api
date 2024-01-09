@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
+use App\Traits\APIResponseTrait;
 
 class AuthController extends Controller
 {
+    use APIResponseTrait;
+    
     /**
      * Get a JWT via given credentials.
      *
